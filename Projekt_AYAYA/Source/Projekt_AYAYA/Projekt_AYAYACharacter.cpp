@@ -20,13 +20,20 @@ AProjekt_AYAYACharacter::AProjekt_AYAYACharacter()
 	bUseControllerRotationYaw = false;
 	GetCharacterMovement()->bOrientRotationToMovement = false;
 
-
+	//creating stamina component on build
+	StaminaComponent = CreateDefaultSubobject<UStaminaComponent>(TEXT("Stamina Component"));
 }
 
 void AProjekt_AYAYACharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
+	// Stamina widget added to viewport
+	if (PlayerStaminaWidgetClass != nullptr)
+	{
+		PlayerStaminaWidget = CreateWidget(GetWorld(), PlayerStaminaWidgetClass);
+		PlayerStaminaWidget->AddToViewport();
+	}
 }
 
 void AProjekt_AYAYACharacter::Tick(float DeltaTime)
@@ -49,11 +56,17 @@ void AProjekt_AYAYACharacter::SetupPlayerInputComponent(UInputComponent* PlayerI
 
 	if (UEnhancedInputComponent* Input = CastChecked<UEnhancedInputComponent>(PlayerInputComponent))
 	{
+		//Move
 		Input->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AProjekt_AYAYACharacter::Move);
+		//Look
 		Input->BindAction(LookAction, ETriggerEvent::Triggered, this, &AProjekt_AYAYACharacter::Look);
+		//Dodge
 		Input->BindAction(DodgeAction, ETriggerEvent::Started, this, &AProjekt_AYAYACharacter::Dodge);
+		//Sprint
+		Input->BindAction(SprintAction, ETriggerEvent::Started, this, &AProjekt_AYAYACharacter::Sprint);
+		//Stop Sprint
+		Input->BindAction(SprintAction, ETriggerEvent::Completed, this, &AProjekt_AYAYACharacter::StopSprint);
 	}
-
 
 }
 
@@ -77,8 +90,6 @@ void AProjekt_AYAYACharacter::Move(const FInputActionValue& InputValue)
 				LastMovementInput = MoveDir;
 			}
 		}
-
-
 }
 
 void AProjekt_AYAYACharacter::Look(const FInputActionValue& InputValue)
@@ -90,8 +101,6 @@ void AProjekt_AYAYACharacter::Look(const FInputActionValue& InputValue)
 			AddControllerYawInput(InputVector.X);
 			AddControllerPitchInput(InputVector.Y);
 		}
-
-
 }
 
 void AProjekt_AYAYACharacter::Dodge()
@@ -103,4 +112,14 @@ void AProjekt_AYAYACharacter::Dodge()
 			const float DodgeStrength = 1000.f;
 			LaunchCharacter(LastMovementInput * DodgeStrength, true, true);
 		}
+}
+
+void AProjekt_AYAYACharacter::Sprint()
+{
+	StaminaComponent->Sprint();
+}
+
+void AProjekt_AYAYACharacter::StopSprint()
+{
+	StaminaComponent->StopSprint();
 }
