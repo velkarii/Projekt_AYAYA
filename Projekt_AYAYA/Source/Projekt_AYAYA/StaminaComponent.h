@@ -24,6 +24,7 @@ public:
 
 	UPROPERTY(VisibleAnywhere) FTimerHandle StaminaHandle;
 	UPROPERTY(VisibleAnywhere) FTimerHandle RegenHandle;
+	UPROPERTY(VisibleAnywhere) FTimerHandle StaminaRegenDelayHandle;
 
 	AProjekt_AYAYACharacter* CharacterReference;
 
@@ -32,6 +33,8 @@ public:
 	void RegenStamina();
 	void DrainStamina();
 	void StaminaCycle();
+	void Dodge(const FVector& Direction);
+	bool CanDodge();
 
 protected:
 	virtual void BeginPlay() override;
@@ -43,5 +46,7 @@ private:
 	void StartDelayedRegen();
 
 	bool bIsWaitingToRegen = false;
+
+	//ustawienie delay dla startu regeneracji
 	float StaminaRegenDelay = 2.0f;
 };

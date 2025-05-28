@@ -107,11 +107,10 @@ void AProjekt_AYAYACharacter::Dodge()
 {
 	if (!IsValid(Controller)) return;
 
-		if (!LastMovementInput.IsNearlyZero())
-		{
-			const float DodgeStrength = 1000.f;
-			LaunchCharacter(LastMovementInput * DodgeStrength, true, true);
-		}
+	if (!LastMovementInput.IsNearlyZero() && StaminaComponent && StaminaComponent->CanDodge())
+	{
+		StaminaComponent->Dodge(LastMovementInput);
+	}
 }
 
 void AProjekt_AYAYACharacter::Sprint()
