@@ -9,6 +9,7 @@ void UANS_InvokeAttackLogic::NotifyBegin(USkeletalMeshComponent* MeshComp, UAnim
 	if (!Owner) return;
 
 #if WITH_EDITOR
+
 	InvokeHitboxLogic(MeshComp, Owner);
 #endif
 
