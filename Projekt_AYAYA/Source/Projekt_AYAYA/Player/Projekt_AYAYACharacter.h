@@ -7,7 +7,7 @@
 #include "StaminaComponent.h"
 #include "Projekt_AYAYACharacter.generated.h"
 
-class UStaminaComponent; //stamina component class
+class UStaminaComponent; //stamina component class tralalero tralala
 UCLASS()
 class AProjekt_AYAYACharacter : public ACharacter
 {
