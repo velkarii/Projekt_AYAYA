@@ -8,13 +8,14 @@ public class Projekt_AYAYA : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput", "UMG" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput", "UMG", "AIModule","GameplayTasks", "AnimationCore", "AnimGraphRuntime" });
 
         PublicIncludePaths.AddRange(
     new string[] {
         "Projekt_AYAYA/GameMode",
         "Projekt_AYAYA/Player",
-        "Projekt_AYAYA/Stamina"
+        "Projekt_AYAYA/Stamina",
+        "Projekt_AYAYA/Enemies"
         });
 
     PrivateIncludePaths.AddRange(
