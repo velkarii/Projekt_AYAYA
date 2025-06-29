@@ -1,9 +1,9 @@
-#include "AIC_Enemy_Base.h"
+#include "EnemyAIBase.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "BehaviorTree/BehaviorTree.h"
 #include "Kismet/GameplayStatics.h"
 
-void AAIC_Enemy_Base::OnPossess(APawn* InPawn)
+void AEnemyAIBase::OnPossess(APawn* InPawn)
 {
     Super::OnPossess(InPawn);
 
@@ -19,7 +19,7 @@ void AAIC_Enemy_Base::OnPossess(APawn* InPawn)
     }
 }
 
-void AAIC_Enemy_Base::SetAttackTargetDelayed()
+void AEnemyAIBase::SetAttackTargetDelayed()
 {
     ACharacter* Player = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0);
     if (Player)

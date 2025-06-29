@@ -1,17 +1,17 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-#include "Enemy_Base.h"
+#include "EnemyActorBase.h"
 #include "Kismet/GameplayStatics.h"
 
-void AEnemy_Base::BeginPlay()
+void AEnemyActorBase::BeginPlay()
 {
 	Super::BeginPlay();
 }
 
-void AEnemy_Base::Tick(float DeltaTime)
+void AEnemyActorBase::Tick(float DeltaTime)
 {
 }
 
-void AEnemy_Base::PlayAttackMontage()
+void AEnemyActorBase::PlayAttackMontage()
 {
     if (!AttackMontage) return;
 
@@ -22,7 +22,7 @@ void AEnemy_Base::PlayAttackMontage()
     }
 }
 
-void AEnemy_Base::WieldSword()
+void AEnemyActorBase::WieldSword()
 {
 	if (BP_Weapon == nullptr) return;
 

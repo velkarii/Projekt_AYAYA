@@ -4,15 +4,15 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
-#include "Projekt_AYAYAGameMode.generated.h"
+#include "MainGameMode.generated.h"
 
 UCLASS(minimalapi)
-class AProjekt_AYAYAGameMode : public AGameModeBase
+class AMainGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
 
 public:
-	AProjekt_AYAYAGameMode();
+	AMainGameMode();
 };
 
 

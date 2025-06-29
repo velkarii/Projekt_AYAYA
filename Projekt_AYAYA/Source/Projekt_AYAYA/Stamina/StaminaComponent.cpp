@@ -1,5 +1,5 @@
 #include "StaminaComponent.h"
-#include "Projekt_AYAYACharacter.h"
+#include "MainCharacter.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
 UStaminaComponent::UStaminaComponent()
@@ -11,7 +11,7 @@ void UStaminaComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
-	CharacterReference = Cast<AProjekt_AYAYACharacter>(GetOwner());
+	CharacterReference = Cast<AMainCharacter>(GetOwner());
 
 	if (CharacterReference != nullptr)
 	{

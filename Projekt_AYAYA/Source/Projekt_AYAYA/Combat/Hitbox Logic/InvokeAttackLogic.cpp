@@ -1,9 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "ANS_InvokeAttackLogic.h"
+#include "InvokeAttackLogic.h"
 
-void UANS_InvokeAttackLogic::NotifyBegin(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, float TotalDuration, const FAnimNotifyEventReference& EventReference)
+void UInvokeAttackLogic::NotifyBegin(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, float TotalDuration, const FAnimNotifyEventReference& EventReference)
 {
 	AActor* Owner = MeshComp->GetOwner();
 	if (!Owner) return;
@@ -14,7 +14,7 @@ void UANS_InvokeAttackLogic::NotifyBegin(USkeletalMeshComponent* MeshComp, UAnim
 
 }
 
-void UANS_InvokeAttackLogic::NotifyEnd(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, const FAnimNotifyEventReference& EventReference)
+void UInvokeAttackLogic::NotifyEnd(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, const FAnimNotifyEventReference& EventReference)
 {
 	const FAnimNotifyEvent* Event = EventReference.GetNotify();
 
@@ -33,7 +33,7 @@ void UANS_InvokeAttackLogic::NotifyEnd(USkeletalMeshComponent* MeshComp, UAnimSe
 	
 }
 
-void UANS_InvokeAttackLogic::InvokeHitboxLogic(USkeletalMeshComponent* MeshComp, AActor* Owner)
+void UInvokeAttackLogic::InvokeHitboxLogic(USkeletalMeshComponent* MeshComp, AActor* Owner)
 {
 	for (const FWeapon& Weapon : Weapons)
 	{

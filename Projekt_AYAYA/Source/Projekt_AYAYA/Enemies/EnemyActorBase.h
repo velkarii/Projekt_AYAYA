@@ -4,10 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include "Enemy_Base.generated.h"
+#include "AI/PatrolRoute.h"
+#include "EnemyActorBase.generated.h"
 
 UCLASS()
-class PROJEKT_AYAYA_API AEnemy_Base : public ACharacter
+class PROJEKT_AYAYA_API AEnemyActorBase : public ACharacter
 {
 	GENERATED_BODY()
 
@@ -20,6 +21,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attack")
 	TSubclassOf<AActor> BP_Weapon;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Patrol")
+	TSubclassOf<AActor> PatrolRoute;
 
 	bool IsWieldingSword = false;
 protected:

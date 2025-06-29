@@ -2,13 +2,13 @@
 
 #include "CoreMinimal.h"
 #include "AIController.h"
-#include "AIC_Enemy_Base.generated.h"
+#include "EnemyAIBase.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class PROJEKT_AYAYA_API AAIC_Enemy_Base : public AAIController
+class PROJEKT_AYAYA_API AEnemyAIBase : public AAIController
 {
 	GENERATED_BODY()
 	

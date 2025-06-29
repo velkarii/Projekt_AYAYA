@@ -1,4 +1,4 @@
-#include "Projekt_AYAYACharacter.h"
+#include "MainCharacter.h"
 #include "InputMappingContext.h"
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
@@ -6,7 +6,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
-AProjekt_AYAYACharacter::AProjekt_AYAYACharacter()
+AMainCharacter::AMainCharacter()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
@@ -24,7 +24,7 @@ AProjekt_AYAYACharacter::AProjekt_AYAYACharacter()
 	StaminaComponent = CreateDefaultSubobject<UStaminaComponent>(TEXT("Stamina Component"));
 }
 
-void AProjekt_AYAYACharacter::BeginPlay()
+void AMainCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
@@ -36,13 +36,13 @@ void AProjekt_AYAYACharacter::BeginPlay()
 	}
 }
 
-void AProjekt_AYAYACharacter::Tick(float DeltaTime)
+void AMainCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
 }
 
-void AProjekt_AYAYACharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+void AMainCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
@@ -57,20 +57,20 @@ void AProjekt_AYAYACharacter::SetupPlayerInputComponent(UInputComponent* PlayerI
 	if (UEnhancedInputComponent* Input = CastChecked<UEnhancedInputComponent>(PlayerInputComponent))
 	{
 		//Move
-		Input->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AProjekt_AYAYACharacter::Move);
+		Input->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AMainCharacter::Move);
 		//Look
-		Input->BindAction(LookAction, ETriggerEvent::Triggered, this, &AProjekt_AYAYACharacter::Look);
+		Input->BindAction(LookAction, ETriggerEvent::Triggered, this, &AMainCharacter::Look);
 		//Dodge
-		Input->BindAction(DodgeAction, ETriggerEvent::Started, this, &AProjekt_AYAYACharacter::Dodge);
+		Input->BindAction(DodgeAction, ETriggerEvent::Started, this, &AMainCharacter::Dodge);
 		//Sprint
-		Input->BindAction(SprintAction, ETriggerEvent::Started, this, &AProjekt_AYAYACharacter::Sprint);
+		Input->BindAction(SprintAction, ETriggerEvent::Started, this, &AMainCharacter::Sprint);
 		//Stop Sprint
-		Input->BindAction(SprintAction, ETriggerEvent::Completed, this, &AProjekt_AYAYACharacter::StopSprint);
+		Input->BindAction(SprintAction, ETriggerEvent::Completed, this, &AMainCharacter::StopSprint);
 	}
 
 }
 
-void AProjekt_AYAYACharacter::Move(const FInputActionValue& InputValue)
+void AMainCharacter::Move(const FInputActionValue& InputValue)
 {
 	FVector2D InputVector = InputValue.Get<FVector2D>();
 
@@ -92,7 +92,7 @@ void AProjekt_AYAYACharacter::Move(const FInputActionValue& InputValue)
 		}
 }
 
-void AProjekt_AYAYACharacter::Look(const FInputActionValue& InputValue)
+void AMainCharacter::Look(const FInputActionValue& InputValue)
 {
 	FVector2D InputVector = InputValue.Get<FVector2D>();
 
@@ -103,7 +103,7 @@ void AProjekt_AYAYACharacter::Look(const FInputActionValue& InputValue)
 		}
 }
 
-void AProjekt_AYAYACharacter::Dodge()
+void AMainCharacter::Dodge()
 {
 	if (!IsValid(Controller)) return;
 
@@ -113,12 +113,12 @@ void AProjekt_AYAYACharacter::Dodge()
 	}
 }
 
-void AProjekt_AYAYACharacter::Sprint()
+void AMainCharacter::Sprint()
 {
 	StaminaComponent->Sprint();
 }
 
-void AProjekt_AYAYACharacter::StopSprint()
+void AMainCharacter::StopSprint()
 {
 	StaminaComponent->StopSprint();
 }

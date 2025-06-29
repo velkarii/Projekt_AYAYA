@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "Animation/AnimNotifies/AnimNotifyState.h"
 #include "Components/CapsuleComponent.h"
-#include "ANS_InvokeAttackLogic.generated.h"
+#include "InvokeAttackLogic.generated.h"
 
 USTRUCT(BlueprintType)
 struct FWeapon
@@ -23,7 +23,7 @@ struct FWeapon
 };
 
 UCLASS()
-class PROJEKT_AYAYA_API UANS_InvokeAttackLogic : public UAnimNotifyState
+class PROJEKT_AYAYA_API UInvokeAttackLogic : public UAnimNotifyState
 {
 	GENERATED_BODY()
 

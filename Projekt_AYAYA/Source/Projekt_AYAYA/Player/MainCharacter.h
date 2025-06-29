@@ -7,9 +7,9 @@
 #include "StaminaComponent.h"
 #include "Projekt_AYAYACharacter.generated.h"
 
-class UStaminaComponent; //stamina component class tralalero tralala
+class UStaminaComponent; //stamina component class
 UCLASS()
-class AProjekt_AYAYACharacter : public ACharacter
+class AMainCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
@@ -41,7 +41,7 @@ protected:
 	UUserWidget* PlayerStaminaWidget;
 
 public:
-	AProjekt_AYAYACharacter();
+	AMainCharacter();
 	//Attaching stamina component to player
 	UPROPERTY(BlueprintReadOnly) UStaminaComponent* StaminaComponent;
 
