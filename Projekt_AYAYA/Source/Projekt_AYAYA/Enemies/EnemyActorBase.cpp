@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 #include "EnemyActorBase.h"
 #include "Kismet/GameplayStatics.h"
+#include "AI/EnemyAIInterface.h"
 
 void AEnemyActorBase::BeginPlay()
 {

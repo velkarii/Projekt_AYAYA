@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "BehaviorTree/BTDecorator.h"
-#include "BTD_IsWieldingWeapon.generated.h"
+#include "IsWieldingWeapon.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class PROJEKT_AYAYA_API UBTD_IsWieldingWeapon : public UBTDecorator
+class PROJEKT_AYAYA_API UIsWieldingWeapon : public UBTDecorator
 {
 	GENERATED_BODY()
 

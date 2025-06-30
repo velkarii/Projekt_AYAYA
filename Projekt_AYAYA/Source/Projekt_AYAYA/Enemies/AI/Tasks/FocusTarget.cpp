@@ -1,10 +1,10 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-#include "BTT_FocusTarget.h"
+#include "FocusTarget.h"
 #include "AIController.h"
 #include "BehaviorTree/BlackboardComponent.h"
-#include "Enemy_Base.h"
+#include "EnemyActorBase.h"
 
-EBTNodeResult::Type UBTT_FocusTarget::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
+EBTNodeResult::Type UFocusTarget::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
 	TObjectPtr<AAIController> AIController = OwnerComp.GetAIOwner();
 

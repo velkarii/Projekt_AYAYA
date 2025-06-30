@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "BehaviorTree/BTTaskNode.h"
-#include "BTT_MoveAlongPatrolRoute.generated.h"
+#include "MoveAlongPatrolRoute.generated.h"
 
 /**
  * 
@@ -13,5 +13,7 @@ UCLASS()
 class PROJEKT_AYAYA_API UBTT_MoveAlongPatrolRoute : public UBTTaskNode
 {
 	GENERATED_BODY()
-	
+
+public:
+	EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
 };

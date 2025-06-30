@@ -14,7 +14,7 @@ void AEnemyAIBase::OnPossess(APawn* InPawn)
         if (UseBlackboard(BehaviorTree->BlackboardAsset, BBComp))
         {
             RunBehaviorTree(BehaviorTree);
-            GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AAIC_Enemy_Base::SetAttackTargetDelayed, 0.1f, false);
+            GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AEnemyAIBase::SetAttackTargetDelayed, 0.1f, false);
         }
     }
 }

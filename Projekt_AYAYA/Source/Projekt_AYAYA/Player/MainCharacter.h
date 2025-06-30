@@ -5,7 +5,7 @@
 #include "InputActionValue.h"
 #include "Blueprint/UserWidget.h" //for stamina widget
 #include "StaminaComponent.h"
-#include "Projekt_AYAYACharacter.generated.h"
+#include "MainCharacter.generated.h"
 
 class UStaminaComponent; //stamina component class
 UCLASS()

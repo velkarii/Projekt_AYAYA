@@ -1,14 +1,14 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-#include "BTT_DefaultAttack.h"
+#include "DefaultAttack.h"
 #include "AIController.h"
-#include "Enemy_Base.h"
+#include "EnemyActorBase.h"
 #include "GameFramework/Character.h"
 #include "Animation/AnimInstance.h"
 
-EBTNodeResult::Type UBTT_DefaultAttack::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
+EBTNodeResult::Type UDefaultAttack::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
 	APawn* ControlledPawn = OwnerComp.GetAIOwner()->GetPawn();
-	AEnemy_Base* Enemy = Cast<AEnemy_Base>(ControlledPawn);
+	AEnemyActorBase* Enemy = Cast<AEnemyActorBase>(ControlledPawn);
 	UAnimInstance* AnimInstance = Enemy->GetMesh()->GetAnimInstance();
 
 	if (!AnimInstance || !Enemy || !Enemy->AttackMontage)
@@ -19,13 +19,13 @@ EBTNodeResult::Type UBTT_DefaultAttack::ExecuteTask(UBehaviorTreeComponent& Owne
 	Enemy->PlayAttackMontage();
 
 	FOnMontageEnded MontageEndedDelegate;
-	MontageEndedDelegate.BindUObject(this, &UBTT_DefaultAttack::OnAttackMontageEnded, &OwnerComp);
+	MontageEndedDelegate.BindUObject(this, &UDefaultAttack::OnAttackMontageEnded, &OwnerComp);
 	AnimInstance->Montage_SetEndDelegate(MontageEndedDelegate, Enemy->AttackMontage);
 
 	return EBTNodeResult::InProgress;
 }
 
-void UBTT_DefaultAttack::OnAttackMontageEnded(UAnimMontage* Montage, bool bInterrupted, UBehaviorTreeComponent* OwnerComp)
+void UDefaultAttack::OnAttackMontageEnded(UAnimMontage* Montage, bool bInterrupted, UBehaviorTreeComponent* OwnerComp)
 {
 	if (OwnerComp)
 	{

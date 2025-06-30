@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "BehaviorTree/BTTaskNode.h"
-#include "BTT_ClearFocus.generated.h"
+#include "ClearFocus.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class PROJEKT_AYAYA_API UBTT_ClearFocus : public UBTTaskNode
+class PROJEKT_AYAYA_API UClearFocus : public UBTTaskNode
 {
 	GENERATED_BODY()
 	

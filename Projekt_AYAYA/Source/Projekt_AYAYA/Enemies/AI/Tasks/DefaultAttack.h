@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "BehaviorTree/BTTaskNode.h"
-#include "BTT_DefaultAttack.generated.h"
+#include "DefaultAttack.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class PROJEKT_AYAYA_API UBTT_DefaultAttack : public UBTTaskNode
+class PROJEKT_AYAYA_API UDefaultAttack : public UBTTaskNode
 {
 	GENERATED_BODY()
 

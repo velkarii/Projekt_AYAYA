@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "BehaviorTree/BTTaskNode.h"
-#include "BTT_WieldSword.generated.h"
+#include "WieldSword.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class PROJEKT_AYAYA_API UBTT_WieldSword : public UBTTaskNode
+class PROJEKT_AYAYA_API UWieldSword : public UBTTaskNode
 {
 	GENERATED_BODY()
 	

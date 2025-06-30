@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "BehaviorTree/BTTaskNode.h"
-#include "BTT_FocusTarget.generated.h"
+#include "FocusTarget.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class PROJEKT_AYAYA_API UBTT_FocusTarget : public UBTTaskNode
+class PROJEKT_AYAYA_API UFocusTarget : public UBTTaskNode
 {
 	GENERATED_BODY()
 

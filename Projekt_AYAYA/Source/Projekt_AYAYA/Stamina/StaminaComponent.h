@@ -5,7 +5,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "StaminaComponent.generated.h"
 
-class AProjekt_AYAYACharacter;
+class AMainCharacter;
 
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class PROJEKT_AYAYA_API UStaminaComponent : public UActorComponent
@@ -26,7 +26,7 @@ public:
 	UPROPERTY(VisibleAnywhere) FTimerHandle RegenHandle;
 	UPROPERTY(VisibleAnywhere) FTimerHandle StaminaRegenDelayHandle;
 
-	AProjekt_AYAYACharacter* CharacterReference;
+	AMainCharacter* CharacterReference;
 
 	void Sprint();
 	void StopSprint();
