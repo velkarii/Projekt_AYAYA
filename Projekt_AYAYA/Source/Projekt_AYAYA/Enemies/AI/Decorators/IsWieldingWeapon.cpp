@@ -7,15 +7,11 @@ bool UIsWieldingWeapon::CalculateRawConditionValue(UBehaviorTreeComponent& Owner
 {
 	APawn* Pawn = OwnerComp.GetAIOwner()->GetPawn();
 	if(!Pawn)
-	{
 		return false;
-	}
 
 	AEnemyActorBase* Enemy = Cast<AEnemyActorBase>(Pawn);
 	if(!Enemy)
-	{
 		return false;
-	}
-
+	
 	return Enemy->IsWieldingSword;
 }

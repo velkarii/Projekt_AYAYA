@@ -6,6 +6,9 @@
 EBTNodeResult::Type UWieldSword::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
 	TObjectPtr<AEnemyActorBase> Enemy = Cast<AEnemyActorBase>(OwnerComp.GetAIOwner()->GetPawn());
+	if (!Enemy)
+		return EBTNodeResult::Failed;
+
 	Enemy->WieldSword();
 	return EBTNodeResult::Succeeded;
 }

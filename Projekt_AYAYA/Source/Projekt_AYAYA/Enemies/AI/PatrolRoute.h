@@ -13,16 +13,15 @@ class PROJEKT_AYAYA_API APatrolRoute : public AActor
 	GENERATED_BODY()
 	
 public:	
-	// Sets default values for this actor's properties
 	APatrolRoute();
 
 	void IncrementPatrolRoute();
 	FVector GetSplinePointAsWorldPosition();
 
+public:
 	int PatrolIndex;
 	int Direction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Patrol Route")
 	USplineComponent* PatrolRoute;
-
 };

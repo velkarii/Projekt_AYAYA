@@ -7,23 +7,23 @@ void AEnemyAIBase::OnPossess(APawn* InPawn)
 {
     Super::OnPossess(InPawn);
 
-    if (BehaviorTree)
-    {
-        BBComp = GetBlackboardComponent();
+    if (!BehaviorTree)
+        return;
+    
+    BBComp = GetBlackboardComponent();
 
-        if (UseBlackboard(BehaviorTree->BlackboardAsset, BBComp))
-        {
-            RunBehaviorTree(BehaviorTree);
-            GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AEnemyAIBase::SetAttackTargetDelayed, 0.1f, false);
-        }
-    }
+    if (!UseBlackboard(BehaviorTree->BlackboardAsset, BBComp))
+        return;
+    
+    RunBehaviorTree(BehaviorTree);
+    GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AEnemyAIBase::SetAttackTargetDelayed, 0.1f, false);
 }
 
 void AEnemyAIBase::SetAttackTargetDelayed()
 {
     ACharacter* Player = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0);
-    if (Player)
-    {
-        GetBlackboardComponent()->SetValueAsObject(AttackTargetKey, (UObject*)Player);
-    }
+    if (!Player)
+        return;
+
+    GetBlackboardComponent()->SetValueAsObject(AttackTargetKey, (UObject*)Player);
 }

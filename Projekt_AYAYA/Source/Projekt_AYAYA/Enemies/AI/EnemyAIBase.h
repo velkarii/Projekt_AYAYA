@@ -24,7 +24,9 @@ private:
 
 	const FName AttackTargetKey = TEXT("AttackTarget");
 
+private:
 	void SetAttackTargetDelayed();
 
+protected:
 	virtual void OnPossess(APawn* InPawn) override;
 };

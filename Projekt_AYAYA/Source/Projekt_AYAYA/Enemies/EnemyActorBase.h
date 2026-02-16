@@ -16,6 +16,7 @@ public:
 	void PlayAttackMontage();
 	void WieldSword();
 
+public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attack")
 	UAnimMontage* AttackMontage;
 
@@ -26,11 +27,9 @@ public:
 	TSubclassOf<AActor> PatrolRoute;
 
 	bool IsWieldingSword = false;
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
 
-private:
-	virtual void Tick(float DeltaTime) override; // Called every frame
+protected:
+	virtual void BeginPlay() override;
+	virtual void Tick(float DeltaTime) override;
 
 };

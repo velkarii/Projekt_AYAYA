@@ -8,14 +8,16 @@
 EBTNodeResult::Type UDefaultAttack::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
 	APawn* ControlledPawn = OwnerComp.GetAIOwner()->GetPawn();
+
+	if (!ControlledPawn)
+		return EBTNodeResult::Failed;
+
 	AEnemyActorBase* Enemy = Cast<AEnemyActorBase>(ControlledPawn);
 	UAnimInstance* AnimInstance = Enemy->GetMesh()->GetAnimInstance();
 
 	if (!AnimInstance || !Enemy || !Enemy->AttackMontage)
-	{
 		return EBTNodeResult::Failed;
-	}
-
+	
 	Enemy->PlayAttackMontage();
 
 	FOnMontageEnded MontageEndedDelegate;
@@ -27,9 +29,8 @@ EBTNodeResult::Type UDefaultAttack::ExecuteTask(UBehaviorTreeComponent& OwnerCom
 
 void UDefaultAttack::OnAttackMontageEnded(UAnimMontage* Montage, bool bInterrupted, UBehaviorTreeComponent* OwnerComp)
 {
-	if (OwnerComp)
-	{
-		// Consider failing the task if montage was interrupted, or succeed otherwise
+	if (OwnerComp && !bInterrupted)
 		FinishLatentTask(*OwnerComp, EBTNodeResult::Succeeded);
-	}
+	else
+		FinishLatentTask(*OwnerComp, EBTNodeResult::Failed);
 }
