@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "AI/PatrolRoute.h"
+#include "Projekt_AYAYA/Health/HealthComponent.h"
 #include "EnemyActorBase.generated.h"
 
 UCLASS()
@@ -28,7 +29,10 @@ public:
 
 	bool IsWieldingSword = false;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+	UHealthComponent* HealthComponent;
 protected:
+	AEnemyActorBase();
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaTime) override;
 

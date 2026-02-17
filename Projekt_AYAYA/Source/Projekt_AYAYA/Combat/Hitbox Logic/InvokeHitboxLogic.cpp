@@ -11,7 +11,7 @@ void UInvokeHitboxLogic::NotifyBegin(USkeletalMeshComponent* MeshComp, UAnimSequ
     {
         AActor* Owner = MeshComp->GetOwner();
         if (!Owner) return;
-
+		
         UHitDetection* HitDetectionComp = Cast<UHitDetection>(Owner->GetComponentByClass(UHitDetection::StaticClass()));
 
         if (HitDetectionComp)

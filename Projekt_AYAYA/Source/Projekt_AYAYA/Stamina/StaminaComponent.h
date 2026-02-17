@@ -19,7 +19,7 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly) float CharacterSpeed = 0.0f;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly) bool IsSprinting = false;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly) bool CanSprint = true;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly) float WalkSpeed = 300.0f;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly) float WalkSpeed = 350.0f;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly) float MaxSpeed = 500.0f;
 
 	UPROPERTY(VisibleAnywhere) FTimerHandle StaminaHandle;
@@ -41,9 +41,9 @@ protected:
 
 public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+	void StartDelayedRegen();
 
 private:
-	void StartDelayedRegen();
 
 	bool bIsWaitingToRegen = false;
 

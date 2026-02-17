@@ -144,7 +144,7 @@ void UStaminaComponent::Dodge(const FVector& Direction)
 {
 	if (!CharacterReference || Direction.IsNearlyZero() || !CanDodge()) return;
 
-	const float DodgeStrength = 1000.f;
+	const float DodgeStrength = 2500.f;
 	CharacterReference->LaunchCharacter(Direction * DodgeStrength, true, true);
 
 	Stamina = FMath::Clamp(Stamina - 15.0f, 0.0f, 100.0f);

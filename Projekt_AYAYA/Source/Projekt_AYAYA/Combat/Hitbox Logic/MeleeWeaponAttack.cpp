@@ -1,4 +1,7 @@
 #include "MeleeWeaponAttack.h"
+#include "Projekt_AYAYA/Health/HealthComponent.h"
+#include "Projekt_AYAYA/Player/MainCharacter.h"
+#include "Projekt_AYAYA/Enemies/EnemyActorBase.h"
 
 void UMeleeWeaponAttack::SetupWeapons()
 {
@@ -49,13 +52,25 @@ void UMeleeWeaponAttack::PerformSweep()
 			for (auto Hit : HitResults)
 			{
 				AActor* HitActor = Hit.GetActor();
+
 				if (!HitActor || HitActors->Contains(HitActor))
 					continue;
 
-				HitActors->Add(HitActor);
+				AMainCharacter* Character = Cast<AMainCharacter>(HitActor);
+				AEnemyActorBase* Enemy = Cast<AEnemyActorBase>(HitActor);
+
+				if (Character && Character->HealthComponent && !Character->HealthComponent->IsDead())
+				{
+					HitActors->Add(HitActor);
+				}
+				else if (Enemy && Enemy->HealthComponent && !Enemy->HealthComponent->IsDead())
+				{
+					HitActors->Add(HitActor);
+				}
+				
 			}
 
-			// DrawDebugCapsule(GetWorld(), (StartLocation + EndLocation) / 2, HalfHeight, 12.f, Rotation, FColor::Red, false, 0); // debug draw
+			DrawDebugCapsule(GetWorld(), (StartLocation + EndLocation) / 2, HalfHeight, 12.f, Rotation, FColor::Red, false, 0); // debug draw
 		}
 	}
 }

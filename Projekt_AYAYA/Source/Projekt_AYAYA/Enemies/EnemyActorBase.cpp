@@ -1,7 +1,13 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 #include "EnemyActorBase.h"
 #include "Kismet/GameplayStatics.h"
+#include "Projekt_AYAYA/Health/HealthComponent.h"
 #include "AI/EnemyAIInterface.h"
+
+AEnemyActorBase::AEnemyActorBase()
+{
+    HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("Health Component"));
+}
 
 void AEnemyActorBase::BeginPlay()
 {
