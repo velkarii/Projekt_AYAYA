@@ -34,10 +34,12 @@ void AMainCharacter::BeginPlay()
 
     if (APlayerController* PC = Cast<APlayerController>(GetController()))
     {
-        PlayerStaminaWidget = CreateWidget<UUserWidget>(PC, PlayerStaminaWidgetClass);
-        if (PlayerStaminaWidget)
+        if (PlayerStaminaWidgetClass)
         {
-            PlayerStaminaWidget->AddToViewport();
+            PlayerStaminaWidget = CreateWidget<UUserWidget>(PC, PlayerStaminaWidgetClass);
+
+            if (PlayerStaminaWidget)
+                PlayerStaminaWidget->AddToViewport();
         }
     }
     

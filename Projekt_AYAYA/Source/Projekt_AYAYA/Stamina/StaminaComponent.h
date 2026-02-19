@@ -48,5 +48,5 @@ private:
 	bool bIsWaitingToRegen = false;
 
 	//ustawienie delay dla startu regeneracji
-	float StaminaRegenDelay = 2.0f;
+	float StaminaRegenDelay = 1.5f;
 };

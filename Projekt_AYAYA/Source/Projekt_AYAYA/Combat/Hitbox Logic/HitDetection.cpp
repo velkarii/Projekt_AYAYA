@@ -44,6 +44,7 @@ void UHitDetection::StopDetection()
 		else if (Enemy && Enemy->HealthComponent && !Enemy->HealthComponent->IsDead())
 		{
 			Enemy->HealthComponent->TakeDamage(25.f);
+			GEngine->AddOnScreenDebugMessage(i++, 5.f, FColor::Green, FString::Printf(TEXT("Enemy Health: %f"), Enemy->HealthComponent->GetHealthNumber()));
 		}
 
 

@@ -12,7 +12,7 @@ class PROJEKT_AYAYA_API UAttackTypeBase : public UObject
 public:
 	virtual void InitializeAttack(USkeletalMeshComponent* InMeshComp, AActor* InOwner, TSet<TObjectPtr<AActor>>* InHitActors);
 
-	virtual void ExecuteAttack() PURE_VIRTUAL(UAttackTypeBase::ExecuteAttack, );
+	virtual void ExecuteAttack() PURE_VIRTUAL(UAttackTypeBase::ExecuteAttack);
 
 	USkeletalMeshComponent* MeshComponent;
 
