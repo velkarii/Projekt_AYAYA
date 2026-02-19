@@ -21,9 +21,16 @@ void AEnemyAIBase::OnPossess(APawn* InPawn)
 
 void AEnemyAIBase::SetAttackTargetDelayed()
 {
-    ACharacter* Player = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0);
-    if (!Player)
-        return;
+    APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 
-    GetBlackboardComponent()->SetValueAsObject(AttackTargetKey, (UObject*)Player);
+    if (!PlayerPawn)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("EnemyAI: Nie znaleziono Pawna gracza!"));
+        return;
+    }
+
+    if (BBComp)
+    {
+        BBComp->SetValueAsObject(AttackTargetKey, PlayerPawn);
+    }
 }
